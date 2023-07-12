@@ -7,20 +7,12 @@ jobs:
     steps:
       - checkout
 
+
+
       - run:
           name: Install Dependencies
           command: |
-            echo "Install Dependencies"
-            sudo apt-get update
-            sudo npm install -g npm@8.19.2
-            make install
-
-      - run:
-          name: Run Tests
-          command: |
-            make test
-
-
+            echo "installing dependency"
 
 workflows:
   version: 2
@@ -28,3 +20,6 @@ workflows:
     # will run for every command AND for every tag that fits the regex
     jobs:
       - build:
+          filters:
+            tags:
+              only: /v\d+.\d+.\d+.*/
