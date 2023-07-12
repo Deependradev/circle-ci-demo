@@ -15,7 +15,6 @@ jobs:
             echo "installing dependency"
             sudo apt-get update
             sudo npm install -g npm@8.19.2
-            make install
 
 workflows:
   version: 2
