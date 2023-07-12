@@ -10,11 +10,21 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            echo "Running CircleCI"
+            echo "Install Dependencies"
+            sudo apt-get update
+            sudo npm install -g npm@8.19.2
+            make install
+
+      - run:
+          name: Run Tests
+          command: |
+            make test
+
 
 
 workflows:
   version: 2
   common-build:
+    # will run for every command AND for every tag that fits the regex
     jobs:
       - build:
